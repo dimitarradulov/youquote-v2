@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "youquote-v2-7b922": {
+      "hosting": {
+        "youquote-v2": [
+          "youquote-v2-7b922"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "youquote-v2-7b922"
+  }
+}
