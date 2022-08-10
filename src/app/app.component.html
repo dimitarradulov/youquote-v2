@@ -1,1 +1,8 @@
-<h1>Hello World!</h1>
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="over" position="end" #sidenav>
+    <navbar-links [isHorizontal]="false"></navbar-links>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <navbar (toggleSideNav)="sidenav.open()"></navbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

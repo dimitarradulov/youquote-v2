@@ -1,0 +1,17 @@
+<div class="nav-links" *ngIf="isHorizontal; else verticalMenu">
+  <a mat-button href="#">All Quotes</a>
+  <a mat-button href="#">My Quotes</a>
+  <a mat-button href="#">Sign In</a>
+  <a mat-button href="#">Logout</a>
+  <a mat-button href="#">Add Quote</a>
+</div>
+
+<ng-template #verticalMenu>
+  <mat-nav-list class="nav-links">
+    <a mat-list-item href="#">All Quotes</a>
+    <a mat-list-item href="#">My Quotes</a>
+    <a mat-list-item href="#">Sign In</a>
+    <a mat-list-item href="#">Logout</a>
+    <a mat-list-item href="#">Add Quote</a>
+  </mat-nav-list>
+</ng-template>
