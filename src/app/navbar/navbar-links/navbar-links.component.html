@@ -1,5 +1,7 @@
 <div class="nav-links" *ngIf="isHorizontal; else verticalMenu">
-  <a mat-button href="#"><mat-icon>format_quote</mat-icon> All Quotes</a>
+  <a mat-button routerLink="quotes/all"
+    ><mat-icon>format_quote</mat-icon> All Quotes</a
+  >
   <a mat-button href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
   <a mat-button href="#"><mat-icon>person</mat-icon> Sign In</a>
   <a mat-button href="#"><mat-icon>logout</mat-icon> Logout</a>
