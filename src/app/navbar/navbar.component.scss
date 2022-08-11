@@ -1,17 +1,21 @@
-.logo {
-  cursor: pointer;
-  -webkit-user-select: none; /* Chrome all / Safari all */
-  -moz-user-select: none; /* Firefox all */
-  -ms-user-select: none; /* IE 10+ */
-  user-select: none; /* Likely future */
-}
+.nav {
+  margin-block-end: 3rem;
 
-.spacer {
-  flex: 1 1 auto;
-}
+  .logo {
+    cursor: pointer;
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Likely future */
+  }
 
-.nav-toggler {
-  display: none;
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  &-toggler {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
