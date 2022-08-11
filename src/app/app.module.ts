@@ -15,12 +15,14 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NavbarLinksComponent } from './navbar/navbar-links/navbar-links.component';
+import { QuotesModule } from './quotes/quotes.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, NavbarLinksComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    QuotesModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
