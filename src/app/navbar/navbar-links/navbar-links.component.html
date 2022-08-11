@@ -1,17 +1,17 @@
 <div class="nav-links" *ngIf="isHorizontal; else verticalMenu">
-  <a mat-button href="#">All Quotes</a>
-  <a mat-button href="#">My Quotes</a>
-  <a mat-button href="#">Sign In</a>
-  <a mat-button href="#">Logout</a>
-  <a mat-button href="#">Add Quote</a>
+  <a mat-button href="#"><mat-icon>format_quote</mat-icon> All Quotes</a>
+  <a mat-button href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
+  <a mat-button href="#"><mat-icon>person</mat-icon> Sign In</a>
+  <a mat-button href="#"><mat-icon>logout</mat-icon> Logout</a>
+  <a mat-button href="#"><mat-icon>add</mat-icon> Add Quote</a>
 </div>
 
 <ng-template #verticalMenu>
   <mat-nav-list class="nav-links">
-    <a mat-list-item href="#">All Quotes</a>
-    <a mat-list-item href="#">My Quotes</a>
-    <a mat-list-item href="#">Sign In</a>
-    <a mat-list-item href="#">Logout</a>
-    <a mat-list-item href="#">Add Quote</a>
+    <a mat-list-item href="#"><mat-icon>format_quote</mat-icon> All Quotes</a>
+    <a mat-list-item href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
+    <a mat-list-item href="#"><mat-icon>person</mat-icon> Sign In</a>
+    <a mat-list-item href="#"><mat-icon>logout</mat-icon> Logout</a>
+    <a mat-list-item href="#"><mat-icon>add</mat-icon> Add Quote</a>
   </mat-nav-list>
 </ng-template>
