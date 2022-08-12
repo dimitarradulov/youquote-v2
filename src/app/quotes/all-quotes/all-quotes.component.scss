@@ -1,0 +1,11 @@
+.quotes-list {
+  list-style: none;
+
+  &__item:not(:last-child) {
+    margin-block-end: 1rem;
+  }
+}
+
+.no-quotes {
+  text-align: center;
+}
