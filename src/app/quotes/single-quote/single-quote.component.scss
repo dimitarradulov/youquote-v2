@@ -1,0 +1,12 @@
+.content {
+  font-size: 1rem;
+}
+
+.author {
+  align-items: center;
+  margin-block-end: 0.5rem;
+
+  &__name {
+    margin: 0;
+  }
+}
