@@ -1,1 +1,7 @@
-<p>all-quotes works!</p>
+<ul class="quotes-list" *ngIf="quotes$ | async as quotes">
+  <li *ngFor="let quote of quotes" class="quotes-list__item">
+    <single-quote [quoteData]="quote"></single-quote>
+  </li>
+</ul>
+
+<loading *ngIf="loadingService.loading$ | async"></loading>
