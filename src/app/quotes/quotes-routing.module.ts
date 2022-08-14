@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AllQuotesComponent } from './all-quotes/all-quotes.component';
 
 const routes: Routes = [{ path: 'quotes/all', component: AllQuotesComponent }];
