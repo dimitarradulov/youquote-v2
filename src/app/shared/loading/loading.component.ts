@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoadingService } from './loading.service';
 
 @Component({
   selector: 'loading',
