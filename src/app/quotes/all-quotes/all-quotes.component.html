@@ -1,3 +1,8 @@
+<error-message
+  *ngIf="errorMessageService.error$ | async as errorMessage"
+  [errorMessage]="errorMessage"
+></error-message>
+
 <ul class="quotes-list" *ngIf="quotes$ | async as quotes">
   <li *ngFor="let quote of quotes" class="quotes-list__item">
     <single-quote [quoteData]="quote"></single-quote>
