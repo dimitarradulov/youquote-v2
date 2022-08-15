@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { finalize, switchMap, tap } from 'rxjs/operators';
 
 @Injectable()
 export class LoadingService {
@@ -11,7 +11,8 @@ export class LoadingService {
     return of(null).pipe(
       tap(() => this.startLoading()),
       switchMap(() => obs$),
-      tap(() => this.stopLoading())
+      tap(() => this.stopLoading()),
+      finalize(() => this.stopLoading())
     );
   }
 
