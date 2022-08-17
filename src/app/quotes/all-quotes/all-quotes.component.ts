@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { Quote } from '../../shared/models/quote.model';
 import { QuotesService } from '../quotes.service';
@@ -23,6 +24,14 @@ export class AllQuotesComponent implements OnInit {
 
   ngOnInit(): void {
     const quotes$ = this.quotesService.getAll();
-    this.quotes$ = this.loadingService.showLoaderUntilComplete(quotes$);
+    this.quotes$ = this.loadingService.showLoaderUntilComplete(quotes$).pipe(
+      catchError((err) => {
+        console.error(err);
+        const message =
+          'There was an error providing the quote/s.. Please try again!';
+        this.errorMessageService.showError(message);
+        return throwError(() => new Error(message));
+      })
+    );
   }
 }
