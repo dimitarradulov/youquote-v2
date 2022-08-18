@@ -1,0 +1,46 @@
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill" class="form__field">
+    <mat-label>Email</mat-label>
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="Ex. pat@example.com"
+      matInput
+    />
+    <mat-error *ngIf="!form.get('email')?.valid && form.get('email')?.touched"
+      >Invalid email address!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="form__field">
+    <mat-label>Password</mat-label>
+    <input formControlName="password" type="password" matInput />
+    <mat-error
+      *ngIf="!form.get('password')?.valid && form.get('password')?.touched"
+      >Invalid password (at least 6 characters)!</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field *ngIf="isSignUpForm" appearance="fill" class="form__field">
+    <mat-label>Confirm Password</mat-label>
+    <input formControlName="confirmPassword" type="password" matInput />
+    <mat-error
+      *ngIf="
+        !form.get('confirmPassword')?.valid &&
+        form.get('confirmPassword')?.touched
+      "
+      >Passwords do not match!</mat-error
+    >
+  </mat-form-field>
+  <div class="button-group">
+    <button type="submit" mat-raised-button>
+      {{ isSignUpForm ? "Sign Up" : "Sign In" }}
+    </button>
+    <button
+      *ngIf="!isSignUpForm"
+      type="button"
+      mat-raised-button
+      color="primary"
+    >
+      Sign In With Google
+    </button>
+  </div>
+</form>
