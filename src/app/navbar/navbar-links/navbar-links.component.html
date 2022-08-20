@@ -2,18 +2,30 @@
   <a mat-button routerLink="quotes/all"
     ><mat-icon>format_quote</mat-icon> All Quotes</a
   >
-  <a mat-button href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
-  <a mat-button routerLink="authenticate"><mat-icon>person</mat-icon> Authenticate</a>
-  <a mat-button href="#"><mat-icon>logout</mat-icon> Logout</a>
-  <a mat-button href="#"><mat-icon>add</mat-icon> Add Quote</a>
+  <ng-template #notAuthenticated>
+    <a mat-button routerLink="authenticate"
+      ><mat-icon>person</mat-icon> Authenticate</a
+    >
+  </ng-template>
+  <ng-container *ngIf="authService.user$ | async; else notAuthenticated">
+    <a mat-button href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
+    <a mat-button (click)="onLogout()"><mat-icon>logout</mat-icon> Logout</a>
+    <a mat-button href="#"><mat-icon>add</mat-icon> Add Quote</a>
+  </ng-container>
 </div>
 
 <ng-template #verticalMenu>
   <mat-nav-list class="nav-links">
     <a mat-list-item href="#"><mat-icon>format_quote</mat-icon> All Quotes</a>
-    <a mat-list-item href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
-    <a mat-list-item routerLink="authenticate"><mat-icon>person</mat-icon> Authenticate</a>
-    <a mat-list-item href="#"><mat-icon>logout</mat-icon> Logout</a>
-    <a mat-list-item href="#"><mat-icon>add</mat-icon> Add Quote</a>
+    <ng-template #notAuthenticated>
+      <a mat-button routerLink="authenticate"
+        ><mat-icon>person</mat-icon> Authenticate</a
+      >
+    </ng-template>
+    <ng-container *ngIf="authService.user$ | async; else notAuthenticated">
+      <a mat-button href="#"><mat-icon>emoji_people</mat-icon> My Quotes</a>
+      <a mat-button href="#"><mat-icon>logout</mat-icon> Logout</a>
+      <a mat-button href="#"><mat-icon>add</mat-icon> Add Quote</a>
+    </ng-container>
   </mat-nav-list>
 </ng-template>
