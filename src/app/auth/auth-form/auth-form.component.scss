@@ -16,4 +16,9 @@
     display: flex;
     gap: 0.5rem;
   }
+
+  .error-message {
+    color: #d32f2f;
+    margin-block-end: 1rem;
+  }
 }
