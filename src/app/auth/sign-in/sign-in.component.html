@@ -1,6 +1,8 @@
 <h1 class="title">Sign In</h1>
 
-<auth-form (formSubmit)="onSignIn($event)"></auth-form>
+<auth-error *ngIf="error" [errorMessage]="error"></auth-error>
+
+<auth-form (formSubmit)="onSignIn($event)" [loading]="loading"></auth-form>
 
 <p class="sign-up-prompt">
   Don't have an account?

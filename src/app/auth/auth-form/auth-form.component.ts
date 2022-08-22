@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService, AuthFormValue } from './../auth.service';
 
@@ -10,12 +11,15 @@ import { AuthService, AuthFormValue } from './../auth.service';
 })
 export class AuthFormComponent implements OnInit {
   @Input() isSignUpForm = false;
+  @Input() loading = false;
   @Output() formSubmit = new EventEmitter();
+
   signInForm: FormGroup;
   signUpForm: FormGroup = new FormGroup({});
-  error = null;
 
-  constructor(private authService: AuthService) {}
+  error: null | string = null;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.signInForm = new FormGroup({
@@ -52,11 +56,13 @@ export class AuthFormComponent implements OnInit {
   }
 
   async onSignInWithGoogle() {
+    this.error = null;
+
     try {
-      this.error = null;
       await this.authService.signInWithGoogle();
+      this.router.navigate(['/']);
     } catch (err: any) {
-      console.error(err);
+      console.error(err.code);
       this.error = err.message;
     }
   }

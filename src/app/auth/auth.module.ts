@@ -10,9 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AuthFormComponent } from './auth-form/auth-form.component';
+import { AuthErrorComponent } from './auth-error/auth-error.component';
 
 @NgModule({
-  declarations: [SignInComponent, SignUpComponent, AuthFormComponent],
+  declarations: [SignInComponent, SignUpComponent, AuthFormComponent, AuthErrorComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,

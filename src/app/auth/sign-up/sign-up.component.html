@@ -1,3 +1,9 @@
 <h1 class="title">Sign Up</h1>
 
-<auth-form [isSignUpForm]="true" (formSubmit)="onSignUp($event)"></auth-form>
+<auth-error *ngIf="error" [errorMessage]="error"></auth-error>
+
+<auth-form
+  [isSignUpForm]="true"
+  [loading]="loading"
+  (formSubmit)="onSignUp($event)"
+></auth-form>
