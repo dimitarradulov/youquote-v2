@@ -1,6 +1,11 @@
-<ng-container *ngIf="userQuotes | async as userQuotes">
+<ng-container *ngIf="userQuotes | async as userQuotes; else noUserQuotes">
   <single-quote *ngFor="let quote of userQuotes" [quoteData]="quote">
     <button mat-button>{{ "Edit" | uppercase }}</button>
     <button mat-button color="warn">{{ "Delete" | uppercase }}</button>
   </single-quote>
 </ng-container>
+<ng-template #noUserQuotes>
+  <h1>You have no quotes!</h1>
+</ng-template>
+
+<quote-form></quote-form>
