@@ -1,5 +1,6 @@
 <ng-container *ngIf="userQuotes | async as userQuotes">
   <single-quote *ngFor="let quote of userQuotes" [quoteData]="quote">
-    <span>TEST</span>
+    <button mat-button>{{ "Edit" | uppercase }}</button>
+    <button mat-button color="warn">{{ "Delete" | uppercase }}</button>
   </single-quote>
 </ng-container>
