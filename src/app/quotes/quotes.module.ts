@@ -9,9 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { AllQuotesComponent } from './all-quotes/all-quotes.component';
 import { SingleQuoteComponent } from './single-quote/single-quote.component';
 import { SharedModule } from '../shared/shared.module';
+import { MyQuotesComponent } from './my-quotes/my-quotes.component';
 
 @NgModule({
-  declarations: [AllQuotesComponent, SingleQuoteComponent],
+  declarations: [AllQuotesComponent, SingleQuoteComponent, MyQuotesComponent],
   imports: [
     CommonModule,
     QuotesRoutingModule,

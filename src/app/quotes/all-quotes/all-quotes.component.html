@@ -5,7 +5,11 @@
 
 <ul class="quotes-list" *ngIf="quotes$ | async as quotes">
   <li *ngFor="let quote of quotes" class="quotes-list__item">
-    <single-quote [quoteData]="quote"></single-quote>
+    <single-quote [quoteData]="quote">
+      <button mat-button>
+        {{ "View Quote" | uppercase }}
+      </button>
+    </single-quote>
   </li>
 </ul>
 
