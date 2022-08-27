@@ -3,6 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Quote } from 'src/app/shared/models/quote.model';
 
+export interface QuoteFormButtonsConfig {
+  submitButtonName: string;
+  cancelButton: boolean;
+}
+
 @Component({
   selector: 'quote-form',
   templateUrl: './quote-form.component.html',
@@ -10,6 +15,7 @@ import { Quote } from 'src/app/shared/models/quote.model';
 })
 export class QuoteFormComponent implements OnInit {
   @Input() quoteData: Quote;
+  @Input() buttonsConfig: QuoteFormButtonsConfig;
   @Output() quoteChanges = new EventEmitter<Partial<Quote>>();
   quoteForm: FormGroup;
   validImageUrlRegex =
