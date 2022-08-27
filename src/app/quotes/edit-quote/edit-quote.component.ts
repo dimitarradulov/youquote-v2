@@ -7,6 +7,7 @@ import { QuotesService } from '../quotes.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { ErrorMessageService } from './../../shared/error-message/error-message.service';
 import { Quote } from 'src/app/shared/models/quote.model';
+import { QuoteFormButtonsConfig } from '../quote-form/quote-form.component';
 
 @Component({
   selector: 'app-edit-quote',
@@ -17,6 +18,10 @@ import { Quote } from 'src/app/shared/models/quote.model';
 export class EditQuoteComponent implements OnInit {
   quote$: Observable<Quote>;
   quoteId: string;
+  quoteFormButtonsConfig: QuoteFormButtonsConfig = {
+    submitButtonName: 'Edit',
+    cancelButton: true,
+  };
 
   constructor(
     private route: ActivatedRoute,
