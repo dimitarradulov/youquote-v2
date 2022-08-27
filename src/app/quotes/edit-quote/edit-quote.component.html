@@ -1,0 +1,12 @@
+<ng-container *ngIf="quote$ | async as quote">
+  <h1 class="text-center">Edit Quote</h1>
+
+  <quote-form [quoteData]="quote" (quoteChanges)="onEdit($event)"></quote-form>
+</ng-container>
+
+<loading *ngIf="loadingService.loading$ | async"></loading>
+
+<error-message
+  *ngIf="errorMessageService.error$ | async as errorMessage"
+  [errorMessage]="errorMessage"
+></error-message>
