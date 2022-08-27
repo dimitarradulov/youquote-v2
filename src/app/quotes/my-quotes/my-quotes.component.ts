@@ -9,11 +9,19 @@ import { QuotesService } from './../quotes.service';
   styleUrls: ['./my-quotes.component.scss'],
 })
 export class MyQuotesComponent implements OnInit {
-  userQuotes: Promise<Quote[]>;
+  userQuotes: Quote[] = [];
+  loading = false;
+  error = null;
 
   constructor(private quotesService: QuotesService) {}
 
   ngOnInit(): void {
-    this.userQuotes = this.quotesService.getAllUserQuotes();
+    this.loading = true;
+    this.error = null;
+    this.quotesService
+      .getAllUserQuotes()
+      .then((quotes) => (this.userQuotes = quotes))
+      .catch((err) => (this.error = err.message))
+      .finally(() => (this.loading = false));
   }
 }
