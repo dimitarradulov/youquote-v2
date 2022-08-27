@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { MyQuotesComponent } from './my-quotes/my-quotes.component';
 import { QuoteFormComponent } from './quote-form/quote-form.component';
 import { EditQuoteComponent } from './edit-quote/edit-quote.component';
+import { AddQuoteComponent } from './add-quote/add-quote.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { EditQuoteComponent } from './edit-quote/edit-quote.component';
     MyQuotesComponent,
     QuoteFormComponent,
     EditQuoteComponent,
+    AddQuoteComponent,
   ],
   imports: [
     CommonModule,
