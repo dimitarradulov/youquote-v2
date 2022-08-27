@@ -1,11 +1,18 @@
-<ng-container *ngIf="userQuotes | async as userQuotes; else noUserQuotes">
+<ng-container *ngIf="userQuotes.length">
   <single-quote *ngFor="let quote of userQuotes" [quoteData]="quote">
-    <button mat-button>{{ "Edit" | uppercase }}</button>
-    <button mat-button color="warn">{{ "Delete" | uppercase }}</button>
+    <button mat-button [routerLink]="['../edit', quote.id]">
+      {{ "Edit" | uppercase }}
+    </button>
+    <button mat-button color="warn">
+      {{ "Delete" | uppercase }}
+    </button>
   </single-quote>
 </ng-container>
-<ng-template #noUserQuotes>
-  <h1>You have no quotes!</h1>
-</ng-template>
 
-<quote-form></quote-form>
+<h1 *ngIf="!userQuotes.length && !error && !loading" class="text-center">
+  You have no quotes!
+</h1>
+
+<loading *ngIf="loading && !error"></loading>
+
+<h1 *ngIf="error && !loading" class="text-center">{{ error }}</h1>
