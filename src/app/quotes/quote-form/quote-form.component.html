@@ -2,16 +2,38 @@
   <mat-form-field appearance="fill" class="form__field">
     <mat-label>Author</mat-label>
     <input matInput type="text" formControlName="author" />
+    <mat-error
+      *ngIf="
+        !quoteForm.get('author')?.valid && quoteForm.get('author')?.touched
+      "
+    >
+      Invalid author (at least 2 characters)!
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="form__field">
     <mat-label>Author Image URL</mat-label>
     <input matInput type="text" formControlName="authorImageUrl" />
+    <mat-error
+      *ngIf="
+        !quoteForm.get('authorImageUrl')?.valid &&
+        quoteForm.get('authorImageUrl')?.touched
+      "
+    >
+      Invalid image url!
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="form__field">
     <mat-label>Content</mat-label>
     <textarea matInput formControlName="content" rows="5"></textarea>
+    <mat-error
+      *ngIf="
+        !quoteForm.get('content')?.valid && quoteForm.get('content')?.touched
+      "
+    >
+      Invalid content (at least 20 characters)!
+    </mat-error>
   </mat-form-field>
 
   <div class="button-group">
