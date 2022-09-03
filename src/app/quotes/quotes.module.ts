@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AllQuotesComponent } from './all-quotes/all-quotes.component';
 import { SingleQuoteComponent } from './single-quote/single-quote.component';
@@ -36,6 +37,7 @@ import { AddQuoteComponent } from './add-quote/add-quote.component';
     MatButtonModule,
     MatDividerModule,
     MatListModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     SharedModule,
