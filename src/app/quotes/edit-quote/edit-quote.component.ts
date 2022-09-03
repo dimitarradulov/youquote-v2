@@ -32,17 +32,13 @@ export class EditQuoteComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.quote$ = this.route.paramMap.pipe(
-      switchMap((paramMap) => {
-        this.quoteId = <string>paramMap.get('quoteId');
+    this.quoteId = this.route.snapshot.params['quoteId'];
 
-        const quoteObs$ = this.quotesServices.getOne(this.quoteId);
+    const quoteData$ = this.quotesServices.getOne(this.quoteId);
 
-        return this.loadingService
-          .showLoaderUntilComplete(quoteObs$)
-          .pipe(catchError(this.handleError));
-      })
-    );
+    this.quote$ = this.loadingService
+      .showLoaderUntilComplete(quoteData$)
+      .pipe(catchError(this.handleError));
   }
 
   onEdit(changes: Partial<Quote>) {
