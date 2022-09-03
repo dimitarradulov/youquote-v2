@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
@@ -29,7 +30,11 @@ export class QuoteFormComponent implements OnInit {
   validImageUrlRegex =
     /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/;
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.quoteForm = this.fb.group({
@@ -51,8 +56,11 @@ export class QuoteFormComponent implements OnInit {
   }
 
   onSubmit() {
-    return;
-    // this.quoteChanges.emit(this.quoteForm.value);
+    this.quoteChanges.emit(this.quoteForm.value);
+  }
+
+  onCancel() {
+    this.location.back();
   }
 
   private checkForBadWords(control: AbstractControl) {
