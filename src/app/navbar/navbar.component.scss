@@ -2,11 +2,22 @@
   margin-block-end: 3rem;
 
   .logo {
+    display: flex;
+    align-items: center;
+    width: 2.5rem;
+
     cursor: pointer;
     -webkit-user-select: none; /* Chrome all / Safari all */
     -moz-user-select: none; /* Firefox all */
     -ms-user-select: none; /* IE 10+ */
     user-select: none; /* Likely future */
+
+    &__image {
+      display: inline-block;
+      max-width: 100%;
+
+      margin-inline-end: 0.5rem;
+    }
   }
 
   .spacer {
