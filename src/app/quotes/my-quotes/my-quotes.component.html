@@ -1,18 +1,30 @@
-<ng-container *ngIf="userQuotes.length">
-  <single-quote *ngFor="let quote of userQuotes" [quoteData]="quote">
-    <button mat-button [routerLink]="['../edit', quote.id]">
-      {{ "Edit" | uppercase }}
-    </button>
-    <button mat-button color="warn">
-      {{ "Delete" | uppercase }}
-    </button>
-  </single-quote>
+<error-message
+  *ngIf="errorMessageService.error$ | async as errorMessage"
+  [errorMessage]="errorMessage"
+></error-message>
+
+<ng-container *ngIf="userQuotes$ | async as userQuotes">
+  <ng-container *ngIf="userQuotes.length; else noQuotes">
+    <div *ngFor="let quote of userQuotes" class="quote-container">
+      <single-quote [quoteData]="quote" class="test">
+        <button mat-button [routerLink]="['../edit', quote.id]">
+          {{ "Edit" | uppercase }}
+        </button>
+        <button mat-button color="warn" (click)="onDelete(quote.id)">
+          {{ "Delete" | uppercase }}
+        </button>
+      </single-quote>
+    </div>
+  </ng-container>
+
+  <ng-template #noQuotes>
+    <div class="text-center">
+      <h1 class="text-center">You have no quotes added!</h1>
+      <button mat-raised-button color="primary" routerLink="../add">
+        Add Quote
+      </button>
+    </div>
+  </ng-template>
 </ng-container>
 
-<h1 *ngIf="!userQuotes.length && !error && !loading" class="text-center">
-  You have no quotes!
-</h1>
-
-<loading *ngIf="loading && !error"></loading>
-
-<h1 *ngIf="error && !loading" class="text-center">{{ error }}</h1>
+<loading *ngIf="loadingService.loading$ | async" [overlay]="true"></loading>
