@@ -1,5 +1,12 @@
 <mat-toolbar color="primary" class="nav">
-  <span class="logo">youQuote</span>
+  <div class="logo" routerLink="/">
+    <img
+      src="../../assets/youQuote-logo.svg"
+      alt="youQuote logo"
+      class="logo__image"
+    />
+    <span>youQuote</span>
+  </div>
   <span class="spacer"></span>
   <button class="nav-toggle" mat-icon-button (click)="toggleSideNav.emit()">
     <mat-icon>menu</mat-icon>
