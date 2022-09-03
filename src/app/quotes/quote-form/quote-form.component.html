@@ -4,10 +4,20 @@
     <input matInput type="text" formControlName="author" />
     <mat-error
       *ngIf="
-        !quoteForm.get('author')?.valid && quoteForm.get('author')?.touched
+        (quoteForm.get('author')?.hasError('required') ||
+          quoteForm.get('author')?.hasError('minlength')) &&
+        quoteForm.get('author')?.touched
       "
     >
       Invalid author (at least 2 characters)!
+    </mat-error>
+    <mat-error
+      *ngIf="
+        quoteForm.get('author')?.hasError('badWord') &&
+        quoteForm.get('author')?.touched
+      "
+    >
+      Bad words are not allowed!
     </mat-error>
   </mat-form-field>
 
@@ -36,11 +46,21 @@
     </mat-error>
   </mat-form-field>
 
-  <div class="button-group">
-    <button type="submit" mat-raised-button color="primary">
+  <div class="button-group mt">
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!quoteForm.valid"
+    >
       {{ buttonsConfig.submitButtonName }}
     </button>
-    <button *ngIf="buttonsConfig.cancelButton" type="button" mat-raised-button>
+    <button
+      *ngIf="buttonsConfig.cancelButton"
+      type="button"
+      mat-raised-button
+      (click)="onCancel()"
+    >
       Cancel
     </button>
   </div>
