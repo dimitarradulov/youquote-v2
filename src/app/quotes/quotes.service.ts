@@ -11,6 +11,7 @@ import {
   docSnapshots,
   DocumentReference,
   updateDoc,
+  deleteDoc,
 } from '@angular/fire/firestore';
 import { first, lastValueFrom, from, throwError } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -67,6 +68,12 @@ export class QuotesService {
     const document = this.getQuoteDocument(quoteId);
 
     return from(updateDoc(document, changes));
+  }
+
+  delete(quoteId: string) {
+    const document = this.getQuoteDocument(quoteId);
+
+    return from(deleteDoc(document));
   }
 
   private get quotesCollection() {
