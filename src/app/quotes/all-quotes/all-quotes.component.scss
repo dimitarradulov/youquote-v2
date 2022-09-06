@@ -1,12 +1,13 @@
+.paginator {
+  background: transparent;
+}
+
 .quotes-list {
   list-style: none;
   padding-inline-start: 0;
 
-  &__item:not(:last-child) {
+  &__item:not(:last-child),
+  &__sort {
     margin-block-end: 1rem;
   }
-}
-
-.no-quotes {
-  text-align: center;
 }
