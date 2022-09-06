@@ -3,14 +3,16 @@
   [errorMessage]="errorMessage"
 ></error-message>
 
-<mat-paginator
-  class="paginator"
-  [length]="getPageLength()"
-  [pageSize]="5"
-  [pageSizeOptions]="[5, 10, 25, 50]"
-  aria-label="Select page"
->
-</mat-paginator>
+<div [hidden]="!paginatedQuotes">
+  <mat-paginator
+    class="paginator"
+    [length]="getPageLength()"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10, 25, 50]"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
 <ul class="quotes-list" *ngIf="paginatedQuotes">
   <li *ngFor="let quote of paginatedQuotes" class="quotes-list__item">
     <single-quote [quoteData]="quote">
