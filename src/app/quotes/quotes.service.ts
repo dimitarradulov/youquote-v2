@@ -12,19 +12,29 @@ import {
   DocumentReference,
   updateDoc,
   deleteDoc,
+  addDoc,
+  orderBy,
 } from '@angular/fire/firestore';
-import { first, lastValueFrom, from, throwError } from 'rxjs';
+import { from } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
 import { Quote } from '../shared/models/quote.model';
 import { AuthService } from '../auth/auth.service';
+import { User } from '@angular/fire/auth';
 
 @Injectable({ providedIn: 'root' })
 export class QuotesService {
-  constructor(private firestore: Firestore, private authService: AuthService) {}
+  user: User | null;
+
+  constructor(private firestore: Firestore, private authService: AuthService) {
+    this.authService.userData.subscribe((user) => (this.user = user));
+  }
 
   getAll() {
     return collectionData(this.quotesCollection, { idField: 'id' }).pipe(
+      map((quotes) =>
+        quotes.sort((a: any, b: any) => b.createdAt - a.createdAt)
+      ),
       shareReplay()
     );
   }
@@ -33,11 +43,14 @@ export class QuotesService {
     try {
       const quotes: Quote[] = [];
 
-      const user = await lastValueFrom(this.authService.user$.pipe(first()));
-
-      const q = query(this.quotesCollection, where('creator', '==', user?.uid));
+      const q = query(
+        this.quotesCollection,
+        where('creator', '==', this.user?.uid ?? ''),
+        orderBy('createdAt', 'desc')
+      );
 
       const userQuotes = await getDocs(q);
+
       userQuotes.forEach((doc) => {
         quotes.push({
           id: doc.id,
@@ -74,6 +87,18 @@ export class QuotesService {
     const document = this.getQuoteDocument(quoteId);
 
     return from(deleteDoc(document));
+  }
+
+  add(quoteData: Partial<Quote>) {
+    const dbRef = this.quotesCollection;
+
+    const quote: Partial<Quote> = {
+      ...quoteData,
+      createdAt: new Date(),
+      creator: this.user?.uid ?? '',
+    };
+
+    return from(addDoc(dbRef, quote));
   }
 
   private get quotesCollection() {
