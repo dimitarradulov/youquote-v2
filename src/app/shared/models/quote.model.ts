@@ -4,4 +4,5 @@ export interface Quote {
   authorImageUrl: string;
   content: string;
   createdAt: Date;
+  creator?: string;
 }
