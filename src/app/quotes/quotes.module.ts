@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AllQuotesComponent } from './all-quotes/all-quotes.component';
 import { SingleQuoteComponent } from './single-quote/single-quote.component';
@@ -40,6 +41,7 @@ import { AddQuoteComponent } from './add-quote/add-quote.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatPaginatorModule,
     SharedModule,
   ],
 })
