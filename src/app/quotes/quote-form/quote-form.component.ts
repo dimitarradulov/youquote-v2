@@ -45,7 +45,7 @@ export class QuoteFormComponent implements OnInit {
       ],
       authorImageUrl: [
         this.quoteData?.authorImageUrl ?? '',
-        [Validators.required, Validators.pattern(this.validImageUrlRegex)],
+        [Validators.pattern(this.validImageUrlRegex)],
       ],
       content: [
         this.quoteData?.content ?? '',
