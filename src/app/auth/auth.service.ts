@@ -9,6 +9,7 @@ import {
   signOut,
 } from '@angular/fire/auth';
 import { doc, Firestore, setDoc } from '@angular/fire/firestore';
+import { take } from 'rxjs/operators';
 
 export interface AuthFormValue {
   email: string;
@@ -26,6 +27,10 @@ export class AuthService {
   user$ = authState(this.auth);
 
   constructor(private auth: Auth, private firestore: Firestore) {}
+
+  get userData() {
+    return this.user$.pipe(take(1));
+  }
 
   async signIn({ email, password }: AuthFormValue) {
     try {
