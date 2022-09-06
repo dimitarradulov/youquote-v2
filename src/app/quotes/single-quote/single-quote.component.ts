@@ -12,4 +12,8 @@ export class SingleQuoteComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  setAuthorImageUrl() {
+    return this.quoteData.authorImageUrl || '../../../assets/no-avatar.jpg';
+  }
 }
