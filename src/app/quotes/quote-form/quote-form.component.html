@@ -39,10 +39,20 @@
     <textarea matInput formControlName="content" rows="5"></textarea>
     <mat-error
       *ngIf="
-        !quoteForm.get('content')?.valid && quoteForm.get('content')?.touched
+        (quoteForm.get('content')?.hasError('required') ||
+          quoteForm.get('content')?.hasError('minlength')) &&
+        quoteForm.get('content')?.touched
       "
     >
       Invalid content (at least 20 characters)!
+    </mat-error>
+    <mat-error
+      *ngIf="
+        quoteForm.get('content')?.hasError('badWord') &&
+        quoteForm.get('content')?.touched
+      "
+    >
+      Bad words are not allowed!
     </mat-error>
   </mat-form-field>
 
