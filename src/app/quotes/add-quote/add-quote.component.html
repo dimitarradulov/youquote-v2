@@ -1,5 +1,13 @@
+<error-message
+  *ngIf="errorMessageService.error$ | async as errorMessage"
+  [errorMessage]="errorMessage"
+></error-message>
+
 <h1 class="text-center">Add Quote</h1>
 
 <quote-form
   [buttonsConfig]="{ submitButtonName: 'Create', cancelButton: false }"
+  (quoteChanges)="onAdd($event)"
 ></quote-form>
+
+<loading *ngIf="loadingService.loading$ | async" [overlay]="true"></loading>
