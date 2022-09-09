@@ -6,7 +6,7 @@ import { catchError, switchMap } from 'rxjs/operators';
 import { QuotesService } from '../quotes.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { ErrorMessageService } from './../../shared/error-message/error-message.service';
-import { Quote } from 'src/app/shared/models/quote.model';
+import { Quote } from 'src/app/quotes/models/quote.model';
 import { QuoteFormButtonsConfig } from '../quote-form/quote-form.component';
 
 @Component({

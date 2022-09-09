@@ -18,7 +18,7 @@ import {
 import { BehaviorSubject, from } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 
-import { Quote } from '../shared/models/quote.model';
+import { Quote } from './models/quote.model';
 import { AuthService } from '../auth/auth.service';
 import { User } from '@angular/fire/auth';
 

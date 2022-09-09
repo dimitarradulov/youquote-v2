@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { from, Observable, throwError } from 'rxjs';
 import { catchError, filter, switchMap } from 'rxjs/operators';
 
-import { Quote } from 'src/app/shared/models/quote.model';
+import { Quote } from 'src/app/quotes/models/quote.model';
 import { QuotesService } from './../quotes.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 import { ErrorMessageService } from 'src/app/shared/error-message/error-message.service';

@@ -9,7 +9,7 @@ import { Subscription, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 
-import { Quote } from '../../shared/models/quote.model';
+import { Quote } from '../models/quote.model';
 import { QuotesService } from '../quotes.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { ErrorMessageService } from 'src/app/shared/error-message/error-message.service';

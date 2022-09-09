@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { ErrorMessageService } from 'src/app/shared/error-message/error-message.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';
 import { QuotesService } from '../quotes.service';
-import { Quote } from 'src/app/shared/models/quote.model';
+import { Quote } from 'src/app/quotes/models/quote.model';
 
 @Component({
   selector: 'app-view-quote',

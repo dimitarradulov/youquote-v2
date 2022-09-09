@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Quote } from 'src/app/shared/models/quote.model';
+import { Quote } from 'src/app/quotes/models/quote.model';
 import { QuotesService } from '../quotes.service';
 import { ErrorMessageService } from 'src/app/shared/error-message/error-message.service';
 import { LoadingService } from 'src/app/shared/loading/loading.service';

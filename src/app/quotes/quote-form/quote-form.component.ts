@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { map } from 'rxjs/operators';
 
-import { Quote } from 'src/app/shared/models/quote.model';
+import { Quote } from 'src/app/quotes/models/quote.model';
 
 export interface QuoteFormButtonsConfig {
   submitButtonName: string;
