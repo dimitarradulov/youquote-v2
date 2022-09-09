@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AllQuotesComponent } from './all-quotes/all-quotes.component';
 import { SingleQuoteComponent } from './single-quote/single-quote.component';
@@ -19,6 +20,7 @@ import { MyQuotesComponent } from './my-quotes/my-quotes.component';
 import { QuoteFormComponent } from './quote-form/quote-form.component';
 import { EditQuoteComponent } from './edit-quote/edit-quote.component';
 import { AddQuoteComponent } from './add-quote/add-quote.component';
+import { ViewQuoteComponent } from './view-quote/view-quote.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AddQuoteComponent } from './add-quote/add-quote.component';
     QuoteFormComponent,
     EditQuoteComponent,
     AddQuoteComponent,
+    ViewQuoteComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +45,7 @@ import { AddQuoteComponent } from './add-quote/add-quote.component';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
+    MatIconModule,
     SharedModule,
   ],
 })
