@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content class="content">
-    {{ quoteData.content }}
+    {{ quoteData.content | truncate: 200 }}
   </mat-card-content>
 
   <mat-card-header class="author">
