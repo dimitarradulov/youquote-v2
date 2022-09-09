@@ -1,0 +1,11 @@
+.likes {
+  padding: 1rem;
+
+  &__count {
+    font-weight: bold;
+  }
+
+  &__text {
+    color: #777;
+  }
+}
