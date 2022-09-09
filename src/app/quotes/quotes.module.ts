@@ -21,6 +21,7 @@ import { QuoteFormComponent } from './quote-form/quote-form.component';
 import { EditQuoteComponent } from './edit-quote/edit-quote.component';
 import { AddQuoteComponent } from './add-quote/add-quote.component';
 import { ViewQuoteComponent } from './view-quote/view-quote.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ViewQuoteComponent } from './view-quote/view-quote.component';
     EditQuoteComponent,
     AddQuoteComponent,
     ViewQuoteComponent,
+    TruncatePipe,
   ],
   imports: [
     CommonModule,
