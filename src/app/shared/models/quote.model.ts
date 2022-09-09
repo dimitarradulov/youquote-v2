@@ -5,4 +5,5 @@ export interface Quote {
   content: string;
   createdAt: Date;
   creator?: string;
+  likes?: string[];
 }
