@@ -15,8 +15,8 @@ import {
   addDoc,
   orderBy,
 } from '@angular/fire/firestore';
-import { from } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { BehaviorSubject, from } from 'rxjs';
+import { map, shareReplay, tap } from 'rxjs/operators';
 
 import { Quote } from '../shared/models/quote.model';
 import { AuthService } from '../auth/auth.service';
@@ -24,6 +24,12 @@ import { User } from '@angular/fire/auth';
 
 @Injectable({ providedIn: 'root' })
 export class QuotesService {
+  private userLikesChange = new BehaviorSubject<string[]>([]);
+  userLikes$ = this.userLikesChange.asObservable();
+  quoteLikedByUser$ = this.userLikes$.pipe(
+    map((userLikes) => userLikes.some((userId) => userId === this.user?.uid))
+  );
+
   user: User | null;
 
   constructor(private firestore: Firestore, private authService: AuthService) {
@@ -73,6 +79,10 @@ export class QuotesService {
 
     return docSnapshots(document).pipe(
       map((docSnapshot) => <Quote>docSnapshot.data()),
+      tap((quoteData) => {
+        if (quoteData.likes) this.userLikesChange.next(quoteData.likes);
+        else this.userLikesChange.next([]);
+      }),
       shareReplay()
     );
   }
@@ -99,6 +109,30 @@ export class QuotesService {
     };
 
     return from(addDoc(dbRef, quote));
+  }
+
+  addOrRemoveLike(quoteId: string) {
+    const userLikes = [...this.userLikesChange.getValue()];
+
+    const didUserLikeQuote = userLikes.some(
+      (userId) => userId === this.user?.uid
+    );
+
+    const userIdIndex = userLikes.findIndex(
+      (userId) => userId === this.user?.uid
+    );
+
+    if (didUserLikeQuote) {
+      userLikes.splice(userIdIndex, 1);
+    } else {
+      userLikes.push(<string>this.user?.uid);
+    }
+
+    this.userLikesChange.next(userLikes);
+
+    const quoteDoc = this.getQuoteDocument(quoteId);
+
+    return from(updateDoc(quoteDoc, { likes: userLikes }));
   }
 
   private get quotesCollection() {
