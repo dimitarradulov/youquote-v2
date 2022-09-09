@@ -48,7 +48,7 @@ export class ViewQuoteComponent implements OnInit {
       .pipe(
         catchError((err) => {
           this.errorMessageService.showError(
-            'Your like was not able to be saved... Please try again!'
+            'Your like was not able to be processed on the server... Please try again!'
           );
           return throwError(() => new Error(err));
         })
