@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Observable, Subscription, throwError } from 'rxjs';
+import { Subscription, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 
@@ -23,6 +23,7 @@ import { ErrorMessageService } from 'src/app/shared/error-message/error-message.
 export class AllQuotesComponent implements OnInit, AfterViewInit, OnDestroy {
   quotes: Quote[];
   paginatedQuotes: Quote[];
+  pageSize = 5;
   subscription: Subscription;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -53,7 +54,9 @@ export class AllQuotesComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.loadPageSizeFromLocalStorage();
     this.paginator.page.subscribe((paginationData) => {
+      this.savePageSizeToLocalStorage(paginationData.pageSize);
       this.paginateQuotes(paginationData.pageSize, paginationData.pageIndex);
     });
   }
@@ -71,5 +74,17 @@ export class AllQuotesComponent implements OnInit, AfterViewInit, OnDestroy {
     const endIndex = startIndex + pageSize;
 
     this.paginatedQuotes = this.quotes.slice(startIndex, endIndex);
+  }
+
+  private savePageSizeToLocalStorage(pageSize: number) {
+    localStorage.setItem('page_size', pageSize.toString());
+  }
+
+  private loadPageSizeFromLocalStorage() {
+    const loadedPageSize = localStorage.getItem('page_size');
+
+    if (!loadedPageSize) return;
+
+    this.pageSize = +loadedPageSize;
   }
 }
