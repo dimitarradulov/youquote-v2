@@ -6,6 +6,7 @@ import { AllQuotesComponent } from './all-quotes/all-quotes.component';
 import { MyQuotesComponent } from './my-quotes/my-quotes.component';
 import { EditQuoteComponent } from './edit-quote/edit-quote.component';
 import { AddQuoteComponent } from './add-quote/add-quote.component';
+import { ViewQuoteComponent } from './view-quote/view-quote.component';
 
 const routes: Routes = [
   { path: 'all', component: AllQuotesComponent },
@@ -32,6 +33,10 @@ const routes: Routes = [
     data: {
       authGuardPipe: () => redirectUnauthorizedTo(['authenticate/sign-in']),
     },
+  },
+  {
+    path: ':quoteId',
+    component: ViewQuoteComponent,
   },
 ];
 
